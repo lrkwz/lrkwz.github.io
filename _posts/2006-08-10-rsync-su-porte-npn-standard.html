@@ -1,0 +1,13 @@
+---
+layout: post
+title: Rsync su porte non standard
+date: '2006-08-10T16:12:00.000+02:00'
+author: Luca Orlandi
+tags:
+- Tech
+modified_time: '2006-11-28T10:14:52.548+01:00'
+blogger_id: tag:blogger.com,1999:blog-5600070.post-115521913234075385
+blogger_orig_url: http://lrkwz.blogspot.com/2006/08/rsync-su-porte-npn-standard.html
+---
+
+<p><span class="043440314-10082006">Con una certa fatica ho capito come  configurare rsync in modo che possa usare via ssh una porta non standard (22):  in giro sulla rete il suggerimento comune è di utilizzare --rsh='ssh  -pXXX'.</span></p> <p><span class="043440314-10082006">Ovviamente la versione di rsync che utilizzo  utilizzando il parametro --rsh <em>impazzisce!</em></span></p> <p><span class="043440314-10082006">Il workaround che ho individuato consiste in  creare il file  ~/.ssh/config e metterci dentro le seguenti righe:</span></p> <p><span class="043440314-10082006">Host <hostname><br />Port XXX</span></p> <p><span class="043440314-10082006"></span> </p>

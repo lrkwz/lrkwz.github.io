@@ -1,0 +1,13 @@
+---
+layout: post
+title: Mod_md5 versus jboss tomcat5
+date: '2005-09-09T15:13:00.000+02:00'
+author: Luca Orlandi
+tags:
+- english
+modified_time: '2011-11-10T14:33:06.990+01:00'
+blogger_id: tag:blogger.com,1999:blog-5600070.post-112627158566722539
+blogger_orig_url: http://lrkwz.blogspot.com/2005/09/modmd5-versus-jboss-tomcat5.html
+---
+
+<div class="mobile-post">I've done it at least!<br /> I've been a mod_md5 fanatic since 2001: it is a light apache<br />module distributed open source by http://www.frogdot.org/, it performs a<br />cookie based form authentication.<br />Apache does cookie verification and delegates to a servlet/jsp container<br />the actual identity check.<br />I think it's quite effective since both http server and application<br />server share the same authentication.<br />If you don't want to integrate/extend the app server authentication in<br />ordedr to provide the correct cookie generation mechanism you can simply<br />delegate it back to apache setting  tomcatAuthentication="false" in your<br />server.xml configuration file.</div>

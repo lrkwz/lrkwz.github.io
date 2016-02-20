@@ -1,0 +1,15 @@
+---
+layout: post
+title: Groovy is magic and English a weird language
+date: '2011-02-07T23:45:00.000+01:00'
+author: Luca Orlandi
+tags:
+- groovy
+- grails
+- Tech
+modified_time: '2011-09-14T20:57:56.089+02:00'
+blogger_id: tag:blogger.com,1999:blog-5600070.post-8226277726072951104
+blogger_orig_url: http://lrkwz.blogspot.com/2011/02/groovy-is-magic-and-english-weird.html
+---
+
+Groovy/Grails sono strumenti stupendi per sviluppare senza doversi troppo disperdere nei dettagli: crei un progetto, aggiungi un paio di plugin assolutamente essenziali (springsecurity-core, springsecurity-ui, searchable ...) e sei pronto a lavorare sulle classi di dominio vere e proprie.<br /><br />Tra le "magie" a tua disposizione c'è il DomainBuilder o anche semplicemente l'ObjectGraphBuilder che permette di istanziare oggetti composti in un unico elegantissimo statement.<br /><br />Un'altra magia imperdibile è la capacità di identificare le collezioni di oggetti semplicemente usando la forma plurale del nome dell'oggetto che contengono (ovviamente gli oggetti del tuo dominio è bene che abbiano nomi inglesi) per cui verrebbe da usare addresses per una collezione di Address ma al momento la versione corrente di groovy non supporta le <a href="http://en.wikipedia.org/wiki/Plural#English">forme irregolari</a> ... quindi attento: non usare Address ma Location!<br /><br />Io tendo a modellare le classi del dominio usando i package per raggrupparle in modo sensato ma ... il class loader dell'ObjectGraphBuilder non è in grado di identificare direttamente i package; <a href="http://jira.codehaus.org/browse/GRAILS-3885?focusedCommentId=167491&amp;page=com.atlassian.jira.plugin.system.issuetabpanels%3Acomment-tabpanel#action_167491">qualcuno</a> suggerisce di inizializzarlo in modo da distinguere il package a partire da una stringa separata da punti (smart isn'it?!):<br /><br /><pre class="code-java">builder.setClassNameResolver { className -&gt;<br />    def parts = className.split(/\./)<br />    def name = parts[-1]<br />    parts[-1] = name[0].toUpperCase() + name.substring(1)<br />    <span class="code-keyword">return</span> parts.join('.')<br />}</pre><br /><br />peccato che funzioni solo per l'oggetto contenitore, se questo contiene per esempio una collezione di com.abc.Location non c'è verso di passare da locations a com.abc.Location; l'unico modo che ho individuato è inizializzarlo brutalmente:<br /><br /><pre class="code-java"><span class="code-comment"></span>builder.classNameResolver = <span class="code-quote">"com.abc"</span></pre><pre class="code-java"><span class="code-quote">&nbsp;</span></pre>bruttino ma funziona

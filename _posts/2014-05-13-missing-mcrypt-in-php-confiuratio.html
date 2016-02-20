@@ -1,0 +1,16 @@
+---
+layout: post
+title: Missing mcrypt in php configuration
+date: '2014-05-13T11:59:00.002+02:00'
+author: Luca Orlandi
+tags:
+- ubuntu
+- ubuntu-14.04
+- ubuntu-64bit
+- php
+modified_time: '2014-05-13T12:01:15.348+02:00'
+blogger_id: tag:blogger.com,1999:blog-5600070.post-744359103402091301
+blogger_orig_url: http://lrkwz.blogspot.com/2014/05/missing-mcrypt-in-php-confiuratio.html
+---
+
+I've recently upgraded to Ubuntu 14.04 64 bit (in the past I've used only the 32bit version) from the past LTS. I'm quite happy with it but I've found a few glitches.<br /><br />The last problem I've faced is<br /><br /><pre>Fatal error: Call to undefined function mcrypt_module_open() in lib/Varien/Crypt/Mcrypt.php<br /></pre><br />Obviously&nbsp;php5-mcrypt is'n installed by default so:<br /><br /><pre>sudo apt-get install php5-mcryp<br /></pre><br />seemed the natural solution ... but .. still you have to manually enable it<br /><br /><pre>sudo php5enmod mcrypt<br /></pre>

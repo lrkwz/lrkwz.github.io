@@ -1,0 +1,13 @@
+---
+layout: post
+title: Che nvidia
+date: '2011-02-24T23:05:00.001+01:00'
+author: Luca Orlandi
+tags:
+- ubuntu
+modified_time: '2011-09-14T22:05:08.246+02:00'
+blogger_id: tag:blogger.com,1999:blog-5600070.post-1896869827916961699
+blogger_orig_url: http://lrkwz.blogspot.com/2011/02/che-nvidia.html
+---
+
+<div dir="ltr" style="text-align: left;" trbidi="on">Recentemente mi sono preso un portatile nuovo (un dell precision M4500) sul quale ho ovviamente montato una Maverick Meerkat fresca fresca. Il pc ha a bordo una scheda grafica nvidia Quadro Fx 880M (GT216) che purtroppo mi sembra mal supportata dal driver proprietario attualmente presente nella distribuzione ubuntu.<br /><br />Fatto sta che un bel giorno gnome non parte più, mi rendo conto di avere inavvertitamente disintallato il package nvidia-current (accade tutte le volte che aggiorni il kernel e vuoi buttare via il package del kernel precedente!), provo a reinstallarlo ma niente da fare di gnome non c'è più traccia.<br /><br />Per farla breve ho risolto con:<br /><ol style="text-align: left;"><li>sudo&nbsp; apt-get install linux-headers-`uname -r`</li><li>download dell'ultima versione del driver scaricata dal <a href="http://www.nvidia.com/object/linux-display-ia32-260.19.36-driver.html">sito nvidia</a> e installazione</li><li>black list per il driver open nouveau</li></ol><br /><span style="font-family: &quot;Courier New&quot;,Courier,monospace;">cat &gt;/etc/modprobe.d/nvidia-graphics-drivers.conf &lt;<delim></delim></span><delim blacklist="" nouveau=""><br style="font-family: &quot;Courier New&quot;,Courier,monospace;" /><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"> blacklist lbm-nouveau</span><br style="font-family: &quot;Courier New&quot;,Courier,monospace;" /><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"> blacklist nvidia-173</span><br style="font-family: &quot;Courier New&quot;,Courier,monospace;" /><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"> blacklist nvidia-96</span><br style="font-family: &quot;Courier New&quot;,Courier,monospace;" /><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"> alias nvidia nvidia-current</span><br style="font-family: &quot;Courier New&quot;,Courier,monospace;" /><span style="font-family: &quot;Courier New&quot;,Courier,monospace;"> DELIM</span><br /><br /></delim></div>
