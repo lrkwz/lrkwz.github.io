@@ -1,4 +1,7 @@
 lrkwz.github.io
 ===============
 
-Source files for [http://lrkwz.github.io](my personal blog)
+Source files for [my personal blog](http://lrkwz.github.io).
+
+References
+<http://jekyllrb.com/docs/github-pages/>
