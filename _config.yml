@@ -21,3 +21,11 @@ paginate: 5
 # Build settings
 markdown: kramdown
 gems: [jekyll-paginate]
+
+google_analytics_ua: UA-89993-1
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
