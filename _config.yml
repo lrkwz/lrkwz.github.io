@@ -23,7 +23,6 @@ markdown: kramdown
 gems:
   - jekyll-paginate
   - jekyll-assets
-  - octopress-debugger
 
 google_analytics_ua: UA-89993-1
 
