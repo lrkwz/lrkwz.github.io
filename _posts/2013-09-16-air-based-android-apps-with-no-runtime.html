@@ -3,10 +3,32 @@ layout: post
 title: AIR based Android apps with no-runtime
 date: '2013-09-16T12:04:00.004+02:00'
 author: Luca Orlandi
-tags: 
+tags:
 modified_time: '2013-09-16T12:08:18.229+02:00'
 blogger_id: tag:blogger.com,1999:blog-5600070.post-6703800316143274608
 blogger_orig_url: http://lrkwz.blogspot.com/2013/09/air-based-android-apps-with-no-runtime.html
 ---
 
-Hello everyone, I'm back to share part of my little experience in the mobile apps world: I've recently been involved into a mobile games project, I'm not doing much anyhow: just setting up a <b>controlled environment</b> which can leave us confident on what is being released to customers (... you know: things like maven, jenkins an the rest ... all those boring things visual programmers aren't used to ...).<br /><br />Everything went smooth, my smart colleagues are producing very nice games targeted to all those cyber-childrens aged between 4 and 10 so lucky to handle a ios or android machine. Adobe's tools are really smart in compiling the air app into native adding AIR's runtime into it ... but you know hunger makes the best cook and apps have being stuffed with fancy music, videos and so on.<br /><br />Here arise a problem: you cannot drop your apk into the play store if it's bigger than 50M unless you split it into external libraries, load them at runtime and so on.<br />In our case it is enough externalising AIR's runtime which seems to be possible since the store handles an <a href="https://play.google.com/store/apps/details?id=com.adobe.air" target="_blank">official copy of it</a>; since I run the adobe's sdk tool adt through <a href="https://github.com/yelbota/adt-maven-plugin" target="_blank">adt-maven-plugin</a>&nbsp;I&nbsp;first unsuccessfully tried configuring &nbsp;<span style="font-family: Courier New, Courier, monospace;">&lt;target&gt;<target><target>apk</target></target>&lt;/target&gt;&nbsp;</span>unfortunately the build returned<br /><br /><pre style="background-color: white; color: #222222; font-size: 11px; white-space: pre-wrap; word-wrap: break-word;">[INFO] NOTE: The AIR SDK no longer supports packaging android applications for use with the shared Runtime.<br />[INFO] The application has been packaged with a captive Runtime.</pre><pre style="background-color: white; color: #222222; font-size: 11px; white-space: pre-wrap; word-wrap: break-word;"></pre><br />I'm a lucky guy and <a href="https://github.com/Antoine-Lassauzay" target="_blank">Antoine noticed</a> an environment variable which makes the job<br /><div><br /></div><div><span style="background-color: #fbfbfb; color: #333333; font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 13px; line-height: 22px;">AIR_ANDROID_SHARED_RUNTIME=true</span></div><div><span style="background-color: #fbfbfb; color: #333333; font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 13px; line-height: 22px;"><br /></span></div>yep! I've dropped the statement into one of those <a href="https://wiki.jenkins-ci.org/display/JENKINS/EnvInject+Plugin">magic jenkins plugin</a>s and ... et voilà ... the apk is 10M skinner :-)
+Hello everyone, I'm back to share part of my little experience in the mobile apps world: I've recently been involved into a mobile games project, I'm not doing much anyhow: just setting up a
+<b>controlled environment</b>
+which can leave us confident on what is being released to customers (... you know: things like maven, jenkins an the rest ... all those boring things visual programmers aren't used to ...).<br/><br/>Everything went smooth, my smart colleagues are
+    producing very nice games targeted to all those cyber-childrens aged between 4 and 10 so lucky to handle a ios or android machine. Adobe's tools are really smart in compiling the air app into native adding AIR's runtime into it ... but you know
+    hunger makes the best cook and apps have being stuffed with fancy music, videos and so on.<br/><br/>Here arise a problem: you cannot drop your apk into the play store if it's bigger than 50M unless you split it into external libraries, load them at runtime and so on.<br/>In our case it is enough externalising AIR's runtime which seems to be possible since the store handles an
+<a href="https://play.google.com/store/apps/details?id=com.adobe.air" target="_blank">official copy of it</a>; since I run the adobe's sdk tool adt through
+<a href="https://github.com/yelbota/adt-maven-plugin" target="_blank">adt-maven-plugin</a>&nbsp;I&nbsp;first unsuccessfully tried configuring &nbsp;<span style="font-family: Courier New, Courier, monospace;">&lt;target&gt;<target>
+        <target>apk</target>
+    </target>&lt;/target&gt;&nbsp;</span>unfortunately the build returned<br/><br/>
+<pre >
+  [INFO] NOTE: The AIR SDK no longer supports packaging android applications for use with the shared Runtime.
+  [INFO] The application has been packaged with a captive Runtime.</pre>
+<br/>I'm a lucky guy and
+<a href="https://github.com/Antoine-Lassauzay" target="_blank">Antoine noticed</a>
+an environment variable which makes the job<br/>
+<div><br/></div>
+<div>
+    <pre>AIR_ANDROID_SHARED_RUNTIME=true</pre>
+</div>
+<div>
+    <span style="background-color: #fbfbfb; color: #333333; font-family: Helvetica, arial, freesans, clean, sans-serif; font-size: 13px; line-height: 22px;"><br/></span>
+</div>yep! I've dropped the statement into one of those
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/EnvInject+Plugin">magic jenkins plugin</a>
