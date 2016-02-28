@@ -20,6 +20,13 @@
        <li><a href="http://lrkwz.github.com/jCryptionSpring/">jCryptionSpring</a></li>
        <li><a href="#">iTours</a></li>
        <li><a href="http://www.flickr.com/lrkwz">flickr</a></li>
+         {% for my_page in site.pages %}
+           {% if my_page.title %}
+           <li><a class="page-link" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a></li>
+           {% endif %}
+         {% endfor %}
+       </div>
+
      </ul>
      <form class="hidden navbar-form navbar-left" role="search">
        <div class="form-group">
@@ -41,7 +48,7 @@
 
   <div class="wrapper">
 
-    <a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
+<!--    <a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>-->
 
     <nav class="site-nav">
       <a href="#" class="menu-icon">
@@ -52,13 +59,6 @@
         </svg>
       </a>
 
-      <div class="trigger">
-        {% for my_page in site.pages %}
-          {% if my_page.title %}
-          <a class="page-link" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a>
-          {% endif %}
-        {% endfor %}
-      </div>
     </nav>
 
   </div>
