@@ -6,3 +6,8 @@ versions = JSON.parse(open('https://pages.github.com/versions.json').read)
 
 gem 'github-pages', versions['github-pages']
 gem 'jekyll-paginate'
+gem "jekyll-assets"
+
+group :jekyll_plugins do
+  gem 'octopress-debugger'
+end
