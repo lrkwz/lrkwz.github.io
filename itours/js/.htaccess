@@ -1,0 +1,8 @@
+Options +Includes
+AddType text/html shtml
+AddHandler server-parsed shtml 
+
+# enable expirations
+ExpiresActive On
+
+ExpiresByType application/javascript M604800
