@@ -1,171 +1,164 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>iTours.it | Un viaggio multimediale alla scoperta
-dell'Italia</title>
-<meta name="description" content="Un viaggio alla scoperta dell'Italia attraverso audio percorsi per gite di un weekend o più" />
-<meta name="keywords" content="Italia,audio,multimedia,viaggi,weekend">
-<meta name="google-site-verification" content="AHLa_OzrsvvVM9aixnIgaLUrdKg1CGeCdZGNtsgjsVA" />
-<meta name="google-site-verification" content="AHLa_OzrsvvVM9aixnIgaLUrdKg1CGeCdZGNtsgjsVA" />
-<link rel="stylesheet" type="text/css" href="/css/overlay-apple.css" />
-<!--<link rel="stylesheet" type="text/css" href="css/scrollable-vertical.css" />-->
-<link rel="stylesheet" type="text/css" href="/css/style.css" />
-<link rel="stylesheet" type="text/css" href="/css/flags.css" />
-<style>
-	/* black version of the overlay. simply uses a different background image */
-	div.apple_overlay.black {
-		background-image:url(/images/transparent.png);
-		color:#fff;
-	}
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>iTours.it | Un viaggio multimediale alla scoperta dell'Italia</title>
+        <meta name="description" content="Un viaggio alla scoperta dell'Italia attraverso audio percorsi per gite di un weekend o più"/>
+        <meta name="keywords" content="Italia,audio,multimedia,viaggi,weekend">
+        <meta name="google-site-verification" content="AHLa_OzrsvvVM9aixnIgaLUrdKg1CGeCdZGNtsgjsVA"/>
+        <meta name="google-site-verification" content="AHLa_OzrsvvVM9aixnIgaLUrdKg1CGeCdZGNtsgjsVA"/>
+        <link rel="stylesheet" type="text/css" href="../css/overlay-apple.css"/>
+        <!--<link rel="stylesheet" type="text/css" href="css/scrollable-vertical.css" />-->
+        <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="../css/flags.css"/>
+        <style>
+            /* black version of the overlay. simply uses a different background image */
+            div.apple_overlay.black {
+                background-image: url("/images/transparent.png");
+                color: #fff;
+            }
 
-	div.apple_overlay h2 {
-		margin:10px 0 -9px 0;
-	}
+            div.apple_overlay h2 {
+                margin: 10px 0 -9px;
+            }
 
-	div.black h2 {
-		color:#fff;
-	}
+            div.black h2 {
+                color: #fff;
+            }
 
-	div#main_menu ul li {
-		display: inline;
-	}
-</style>
-<!--[if lt IE 7]>
-<style>
-div.apple_overlay {
-	background-image:url(images/overlay_IE6.gif);
-	color:#fff;
-}
+            div#main_menu ul li {
+                display: inline;
+            }
 
-/* default close button positioned on upper right corner */
-div.apple_overlay div.close {
-	background-image:url(images/overlay_close_IE6.gif);
-}
-</style>
-<![endif]-->
+        </style>
+        <!--[if lt IE 7]> <style> div.apple_overlay { background-image:url(images/overlay_IE6.gif); color:#fff; } /* default close button positioned on upper right corner */ div.apple_overlay div.close { background-image:url(images/overlay_close_IE6.gif); } </style> <![endif]-->
 
-<script type="text/javascript" src="/js/jquery-1.4.3.min.js"></script>
-<script type="text/javascript" src="/js/jquery.tools-1.2.5.min.js"></script>
-<script type="text/javascript" src="/js/jquery.hoverIntent-r5.minified.js"></script>
-<script type="text/javascript" src="/js/flowplayer-3.2.4.min.js"></script>
-<script type="text/javascript" src="/js/flowplayer.playlist-3.0.8.min.js"></script>
+        <script type="text/javascript" src="../js/jquery-1.4.3.min.js"></script>
+        <script type="text/javascript" src="../js/jquery.tools-1.2.5.min.js"></script>
+        <script type="text/javascript" src="../js/jquery.hoverIntent-r5.minified.js"></script>
+        <script type="text/javascript" src="../js/flowplayer-3.2.4.min.js"></script>
+        <script type="text/javascript" src="../js/flowplayer.playlist-3.0.8.min.js"></script>
 
+        <script>
+            // What is $(document).ready ? See: http://flowplayer.org/tools/documentation/basics.html#document_ready
+            $(document).ready(function () {
 
-<script>
-	// What is $(document).ready ? See: http://flowplayer.org/tools/documentation/basics.html#document_ready
-    $(document).ready(function(){
+                $("#chisiamo_trigger[rel]").overlay({effect: 'apple'});
 
-        $("#chisiamo_trigger[rel]").overlay({effect: 'apple'});
+                $("#flash[rel]").overlay({effect: 'apple'});
+                $("#logo_trigger[rel]").overlay({effect: 'apple'});
 
+                // loader dei bottoni al click o dopo sosta
+                $("ul.sf-menu li").hoverIntent(function () {
+                    $("a[rel]", this).overlay({
+                        load: true, effect: 'apple',
+                        // some mask tweaks suitable for modal dialogs
+                        mask: {
+                            color: '#b7c6cb',
+                            loadSpeed: 200,
+                            opacity: 0.9
+                        },
+                        onBeforeLoad: function () {
 
-        $("#flash[rel]").overlay({effect: 'apple'});
-        $("#logo_trigger[rel]").overlay({effect: 'apple'});
+                            // grab wrapper element inside content
+                            var wrap = this.getOverlay().find(".contentWrap");
 
-      // loader dei bottoni al click o dopo sosta
-    	$("ul.sf-menu li").hoverIntent(
-			  function () {
-					  $("a[rel]", this).overlay({
-						  load: true,
-						  effect: 'apple',
-						  // some mask tweaks suitable for modal dialogs
-						  mask: {
-							  color: '#b7c6cb',
-							  loadSpeed: 200,
-							  opacity: 0.9
-						  },
-						  onBeforeLoad: function() {
+                            // load the page specified in the trigger
+                            wrap.load(this.getTrigger().attr("href"));
+                        },
+                        closeOnClick: false
+                    })
+                    $("a[rel]", this).data('overlay').load();
+                }, function () {});
 
-							  // grab wrapper element inside content
-							  var wrap = this.getOverlay().find(".contentWrap");
+                $("#ascolta").click(function () {
+                    // install flowplayer into container
+                    $f("audiosecure", "../audio/flowplayer-3.2.5.swf", {
+                        plugins: {
+                            audio: {
+                                url: '../audio/flowplayer.audio-3.2.1.swf'
+                            },
+                            controls: {
+                                url: '../audio/flowplayer.controls-3.2.3.swf',
+                                fullscreen: false,
+                                height: 30,
+                                autoHide: false,
+                                buttonColor: 'rgba(0, 0, 0, 0.9)',
+                                buttonOverColor: '#000000',
+                                backgroundColor: '#FFFFFF',
+                                backgroundGradient: 'medium',
+                                sliderColor: '#FFFFFF',
 
-							  // load the page specified in the trigger
-							  wrap.load(this.getTrigger().attr("href"));
-						  },
-						  closeOnClick: false
-					  }
-					  )
-				  $("a[rel]", this).data('overlay').load();
-			  },
-			  function () {
-			  }
-    	);
+                                sliderBorder: '1px solid #808080',
+                                volumeSliderColor: '#FFFFFF',
+                                volumeBorder: '1px solid #808080',
 
-    	$("#ascolta").click( function(){
-    		// install flowplayer into container
-    		$f("audiosecure", "/audio/flowplayer-3.2.5.swf", {
-    			plugins: {
-    				audio: {
-    					url: '/audio/flowplayer.audio-3.2.1.swf'
-    				},
-    				controls: {
-    					url: '/audio/flowplayer.controls-3.2.3.swf',
-    					fullscreen: false,
-    					height: 30,
-    					autoHide: false,
-    					buttonColor: 'rgba(0, 0, 0, 0.9)',
-    					buttonOverColor: '#000000',
-    					backgroundColor: '#FFFFFF',
-    					backgroundGradient: 'medium',
-    					sliderColor: '#FFFFFF',
+                                timeColor: '#000000',
+                                durationColor: '#535353'
+                            }
+                        },
+                        clip: {
+                            autoPlay: true
+                        },
+                        playlist: [
+                            'audio/GTC_Estratto_Circeo.mp3', {
+                                url: 'audio/GTC_Estratto_Circeo.mp3',
+                                coverImage: {
+                                    url: '../images/ascolta.jpg',
+                                    scaling: 'orig'
+                                }
+                            }
+                        ]
+                    }).play();
+                });
+                $("*[title]").tooltip({
 
-    					sliderBorder: '1px solid #808080',
-    					volumeSliderColor: '#FFFFFF',
-    					volumeBorder: '1px solid #808080',
+                    // use div.tooltip as our tooltip
+                    tip: '.tooltip',
 
-    					timeColor: '#000000',
-    					durationColor: '#535353'    				}
-    			},
-    			clip: {
-    				autoPlay: true
-    			},
-    			playlist: [
-    			            'audio/GTC_Estratto_Circeo.mp3',
-    			            {
-    			            	url:'audio/GTC_Estratto_Circeo.mp3',
-    			            	coverImage: { url: '/images/ascolta.jpg', scaling: 'orig' }
-    			            }
-    			           ]
-    		}).play();
-    	});
-    	$("*[title]").tooltip({
+                    // use the fade effect instead of the default
+                    effect: 'fade',
 
-    		// use div.tooltip as our tooltip
-    		tip: '.tooltip',
+                    // make fadeOutSpeed similar to the browser's default
+                    fadeOutSpeed: 100,
 
-    		// use the fade effect instead of the default
-    		effect: 'fade',
+                    // the time before the tooltip is shown
+                    predelay: 400,
 
-    		// make fadeOutSpeed similar to the browser's default
-    		fadeOutSpeed: 100,
+                    // tweak the position
+                    position: "bottom right",
+                    //offset: [-50, -80]
+                }).dynamic({
+                    bottom: {
+                        direction: 'down',
+                        bounce: true
+                    }
+                });
 
-    		// the time before the tooltip is shown
-    		predelay: 400,
+                $("#audiosecure").click(function () {
+                    $("#audiosecure").hide();
+                });
 
-    		// tweak the position
-    		position: "bottom right",
-    		//offset: [-50, -80]
-    	}).dynamic({ bottom: { direction: 'down', bounce: true } });
-
-    	$("#audiosecure").click( function(){
-    		$("#audiosecure").hide();
-    	});
-    	
-    });
-</script>
-</head>
-<body>
-<div id="header" class="container">
-	<a id="logo_trigger" href="#" class="bottom" rel="#main_description"><img id="logo" border="0" src="/images/logo.jpg" alt="logo iTours.it" ></a>
-	<p class="bottom"><span id="claim">Un viaggio<br/> multimediale<br/> alla scoperta<br/> della Penisola</span></p>
-	<span class="top right">
-		<a id="chisiamo_trigger" href="chi_siamo.html" rel="#chi_siamo" title="Presentazione del team">Chi siamo</a>&nbsp;|&nbsp;
-		<a href="mailto:info@itours.it?subject=Richiesta informazioni">Contatti</a>
-		<a href="#"><img src="/images/blank.gif" class="flag flag-it" alt="Italiano" /></a>
-		<a href="/de"><img src="/images/blank.gif" class="flag flag-de" alt="Deutsch" /></a>
-		<a href="/en"><img src="/images/blank.gif" class="flag flag-gb" alt="English" /></a>
-	</span>
-	<!-- &nbsp;|&nbsp;
+            });
+        </script>
+    </head>
+    <body>
+        <div id="header" class="container">
+            <a id="logo_trigger" href="#" class="bottom" rel="#main_description"><img id="logo" border="0" src="../images/logo.jpg" alt="logo iTours.it"></a>
+            <p class="bottom">
+                <span id="claim">Un viaggio<br/>
+                    multimediale<br/>
+                    alla scoperta<br/>
+                    della Penisola</span>
+            </p>
+            <span class="top right">
+                <a id="chisiamo_trigger" href="chi_siamo.html" rel="#chi_siamo" title="Presentazione del team">Chi siamo</a>&nbsp;|&nbsp;
+                <a href="mailto:info@itours.it?subject=Richiesta informazioni">Contatti</a>
+                <a href="#"><img src="../images/blank.gif" class="flag flag-it" alt="Italiano"/></a>
+                <a href="../de"><img src="../images/blank.gif" class="flag flag-de" alt="Deutsch"/></a>
+                <a href="../en"><img src="../images/blank.gif" class="flag flag-gb" alt="English"/></a>
+            </span>
+            <!-- &nbsp;|&nbsp;
 		<form action="http://www.google.com/cse" id="cse-search-box">
 		  <div class="right">
 		    <input type="hidden" name="cx" value="004779039571354154056:vnlfrd9mrvi" />
@@ -177,99 +170,119 @@ div.apple_overlay div.close {
 		</form>
 		<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&lang=it"></script>
 -->
-</div>
-<!-- AddThis Button BEGIN -->
-<div class="addthis_toolbox addthis_default_style ">
-<a class="addthis_button_preferred_1"></a>
-<a class="addthis_button_preferred_2"></a>
-<a class="addthis_button_preferred_3"></a>
-<a class="addthis_button_preferred_4"></a>
-<a class="addthis_button_compact"></a>
-</div>
-<script type="text/javascript">var addthis_config = {"data_track_clickback":true};</script>
-<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=lrkwz"></script>
-<!-- AddThis Button END -->
+        </div>
+        <!-- AddThis Button BEGIN -->
+        <div class="addthis_toolbox addthis_default_style ">
+            <a class="addthis_button_preferred_1"></a>
+            <a class="addthis_button_preferred_2"></a>
+            <a class="addthis_button_preferred_3"></a>
+            <a class="addthis_button_preferred_4"></a>
+            <a class="addthis_button_compact"></a>
+        </div>
+        <script type="text/javascript">
+            var addthis_config = {
+                "data_track_clickback": true
+            };
+        </script>
+        <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=lrkwz"></script>
+        <!-- AddThis Button END -->
 
-<div id="chi_siamo" class="apple_overlay">
-	<img src="/images/chi_siamo.jpg" width="70%"/>
-	<div class="details">
-		<h2>Chi siamo</h2>
-		<p>Un gruppo di professionisti della comunicazione accomunati dalla passione per il nostro Paese, innamorati di borghi, monumenti, luoghi d’arte, territori minori, luoghi naturali, cucina genuina. Un gruppo che ha deciso di fondere le proprie pluridecennali competenze giornalistiche, tecnologiche e informatiche per condividere e far godere al maggior numero di persone possibile le più belle esperienze vissute in anni di viaggi in Italia</p>
-	</div>
-</div>
+        <div id="chi_siamo" class="apple_overlay">
+            <img src="../images/chi_siamo.jpg" width="70%"/>
+            <div class="details">
+                <h2>Chi siamo</h2>
+                <p>Un gruppo di professionisti della comunicazione accomunati dalla passione per il nostro Paese, innamorati di borghi, monumenti, luoghi d’arte, territori minori, luoghi naturali, cucina genuina. Un gruppo che ha deciso di fondere le proprie
+                    pluridecennali competenze giornalistiche, tecnologiche e informatiche per condividere e far godere al maggior numero di persone possibile le più belle esperienze vissute in anni di viaggi in Italia</p>
+            </div>
+        </div>
 
-<div id="body">
-<!--	<img id="mascotte" src="images/mascotte.jpg" alt="mascotte">-->
-	<img id="ascolta" src="/images/ascolta.gif" border="0" title="Premi per ascoltare un esempio di audio-tour" alt="Ascolta"/>
-	<div  id="flash" href="description.html" rel="#main_description"></div>
-	<div id="main_description" class="apple_overlay">
-		<div class="details">
-	<div class="scrollable vertical">
-		<h2>iTours.it: un viaggio multimediale alla scoperta della Penisola</h2>
-		<p>Accompagnati dalle nostre audioguide, potrete andare alla scoperta dei luoghi culturali, artistici e naturali più affascinanti delle Penisola.</p>
-		<p>Le nostre voci vi guideranno lungo le strade, vi indicheranno gli scorci più interessanti o i dettagli più intriganti, suggerendovi anche selezionate soste golose in una serie di brevi itinerari, descritti nei dettagli, studiati per farvi conoscere e apprezzare angoli noti e meno noti del nostro Paese.</p>
-		<p>iTours vi guida alla scoperta:<ul>
-		<li>dei più interessanti itinerari turistici della cosiddetta Italia minore</li>
-		<li>dei più curiosi parchi e giardini all’aperto dedicati all’arte contemporanea</li>
-		<li>di itinerari enogastronomici per sperimentare il meglio delle cucine regionali</li>
-		<li>di vini Doc poco noti ma dalla storia appassionante (e dal gusto speciale)</li>
-		<li>dei più bei paesaggi di montagna da godersi a piedi</li>
-		<li>di collaudati percorsi in bicicletta immersi nella natura.</li></ul>
-		</p>
-		<h2>Progetti su misura</h2>
-		<p>Enti di promozione turistica, consorzi di operatori, hotel all’avanguardia o catene alberghiere, Comuni, Pro Loco, editori multimediali, fondazioni: sono solo alcuni dei clienti con cui collaboriamo per mettere a punto progetti e prodotti realizzati su misura. Studiati per far conoscere e valorizzare i troppi giacimenti preziosi che il nostro turismo ancora nasconde. C’è tanto da fare.</p>
-		</div>
-		</div>
-	</div>
-	<div id="main_menu">
-		<ul class="sf-menu">
-			<li><a href="i_gioielli.html" rel="#overlay"><img src="/images/i_gioielli.jpg" alt="Gioielli d'Italia" border="0" /></a>
-			</li>
-			<li><a href="arte_e_natura.html" rel="#overlay"><img src="/images/arte_e_natura.jpg" alt="Arte e natura in simbiosi" border="0" /></a>
-			</li>
-			<li><a href="tutte_le_strade.html" rel="#overlay"><img src="/images/tutte_le_strade.jpg" alt="Tutte le strade portano a tavola" border="0"/></a>
-			</li>
-			<li><a href="al_ribollir.html" rel="#overlay" ><img src="/images/al_ribollir.jpg" alt="Al ribollir de'tini" border="0"/></a>
-			</li>
-			<li><a href="a_spasso_tra_i_monti.html" rel="#overlay"><img src="/images/a_spasso_tra_i_monti.jpg" alt="A spasso tra i monti" border="0"/></a>
-			</li>
-			<li><a href="visti_dal_sellino.html" rel="#overlay"><img src="/images/visti_dal_sellino.jpg" alt="Visti dal sellino" border="0"/></a>
-			</li>
-			<li><a href="professionals.html" rel="#overlay"><img src="/images/professionals.jpg" alt="Professionisti" border="0" /></a>
-			</li>
-<!-- 			<li><a href="http://maps.google.com/maps/ms?ie=UTF&msa=0&msid=201345255308511531534.00049a9e276c67dd6d7c6"><img src="images/mappe.jpg" alt="Cerca" border="0" /></a></li> -->
-		</ul>
-	</div>
-	<div class="apple_overlay" id="overlay">
-		<!-- the external content is loaded inside this tag -->
-		<div class="contentWrap"></div>
-	</div>
-</div>
-<script type="text/javascript">
-    	flashembed("#flash", {src: "swf/intro-1.swf", wmode: 'opaque'});
-</script>
-<br/>
-<span id="audiosecure"></span>
-<script type="text/javascript" >
-</script>
-<div id="footer" style="clear: both;">
-	<ul>
-	</ul>
-	<p>&copy; iTours.it</p>
-</div>
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-10959693-1']);
-  _gaq.push(['_trackPageview']);
+        <div id="body">
+            <!--	<img id="mascotte" src="images/mascotte.jpg" alt="mascotte">-->
+            <img id="ascolta" src="../images/ascolta.gif" border="0" title="Premi per ascoltare un esempio di audio-tour" alt="Ascolta"/>
+            <div id="flash" href="description.html" rel="#main_description"></div>
+            <div id="main_description" class="apple_overlay">
+                <div class="details">
+                    <div class="scrollable vertical">
+                        <h2>iTours.it: un viaggio multimediale alla scoperta della Penisola</h2>
+                        <p>Accompagnati dalle nostre audioguide, potrete andare alla scoperta dei luoghi culturali, artistici e naturali più affascinanti delle Penisola.</p>
+                        <p>Le nostre voci vi guideranno lungo le strade, vi indicheranno gli scorci più interessanti o i dettagli più intriganti, suggerendovi anche selezionate soste golose in una serie di brevi itinerari, descritti nei dettagli, studiati per farvi
+                            conoscere e apprezzare angoli noti e meno noti del nostro Paese.</p>
+                        <p>iTours vi guida alla scoperta:<ul>
+                                <li>dei più interessanti itinerari turistici della cosiddetta Italia minore</li>
+                                <li>dei più curiosi parchi e giardini all’aperto dedicati all’arte contemporanea</li>
+                                <li>di itinerari enogastronomici per sperimentare il meglio delle cucine regionali</li>
+                                <li>di vini Doc poco noti ma dalla storia appassionante (e dal gusto speciale)</li>
+                                <li>dei più bei paesaggi di montagna da godersi a piedi</li>
+                                <li>di collaudati percorsi in bicicletta immersi nella natura.</li>
+                            </ul>
+                        </p>
+                        <h2>Progetti su misura</h2>
+                        <p>Enti di promozione turistica, consorzi di operatori, hotel all’avanguardia o catene alberghiere, Comuni, Pro Loco, editori multimediali, fondazioni: sono solo alcuni dei clienti con cui collaboriamo per mettere a punto progetti e prodotti
+                            realizzati su misura. Studiati per far conoscere e valorizzare i troppi giacimenti preziosi che il nostro turismo ancora nasconde. C’è tanto da fare.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="main_menu">
+                <ul class="sf-menu">
+                    <li>
+                        <a href="i_gioielli.html" rel="#overlay"><img src="../images/i_gioielli.jpg" alt="Gioielli d'Italia" border="0"/></a>
+                    </li>
+                    <li>
+                        <a href="arte_e_natura.html" rel="#overlay"><img src="../images/arte_e_natura.jpg" alt="Arte e natura in simbiosi" border="0"/></a>
+                    </li>
+                    <li>
+                        <a href="tutte_le_strade.html" rel="#overlay"><img src="../images/tutte_le_strade.jpg" alt="Tutte le strade portano a tavola" border="0"/></a>
+                    </li>
+                    <li>
+                        <a href="al_ribollir.html" rel="#overlay"><img src="../images/al_ribollir.jpg" alt="Al ribollir de'tini" border="0"/></a>
+                    </li>
+                    <li>
+                        <a href="a_spasso_tra_i_monti.html" rel="#overlay"><img src="../images/a_spasso_tra_i_monti.jpg" alt="A spasso tra i monti" border="0"/></a>
+                    </li>
+                    <li>
+                        <a href="visti_dal_sellino.html" rel="#overlay"><img src="../images/visti_dal_sellino.jpg" alt="Visti dal sellino" border="0"/></a>
+                    </li>
+                    <li>
+                        <a href="professionals.html" rel="#overlay"><img src="../images/professionals.jpg" alt="Professionisti" border="0"/></a>
+                    </li>
+                    <!-- 			<li><a href="http://maps.google.com/maps/ms?ie=UTF&msa=0&msid=201345255308511531534.00049a9e276c67dd6d7c6"><img src="images/mappe.jpg" alt="Cerca" border="0" /></a></li> -->
+                </ul>
+            </div>
+            <div class="apple_overlay" id="overlay">
+                <!-- the external content is loaded inside this tag -->
+                <div class="contentWrap"></div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            flashembed("#flash", {
+                src: "swf/intro-1.swf",
+                wmode: 'opaque'
+            });
+        </script>
+        <br/>
+        <span id="audiosecure"></span>
+        <script type="text/javascript"></script>
+        <div id="footer" style="clear: both;">
+            <ul></ul>
+            <p>&copy; iTours.it</p>
+        </div>
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-10959693-1']);
+            _gaq.push(['_trackPageview']);
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-<!-- the tooltip -->
-<span class="tooltip">&nbsp;</span>
-</body>
+            (function () {
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' == document.location.protocol
+                    ? 'https://ssl'
+                    : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+        <!-- the tooltip -->
+        <span class="tooltip">&nbsp;</span>
+    </body>
 </html>
-
