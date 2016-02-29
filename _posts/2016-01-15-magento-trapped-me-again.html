@@ -11,4 +11,16 @@ blogger_id: tag:blogger.com,1999:blog-5600070.post-8068837004754399444
 blogger_orig_url: http://lrkwz.blogspot.com/2016/01/magento-trapped-me-again.html
 ---
 
-It isn't the first time ... refactoring a module (well actually I'm transforming and extensions which was incompatible with another installed one) I realized that only the admin panels were working, the product page nearly disappeared: header and footer plus sidebar but no product contents at all.<br /><br />After validating all the mappings, blocks etc etc it ended up that I accidentally reformat the config.xml ... a new-line was dropped after the class name !<br /><br /><pre class="prettyprint lang-xml">&lt;catalog&gt;<br />   &lt;rewrite&gt;<br />     &lt;product_view_options_type_select&gt;Companyname_Modulename_Block_Product_View_Options_Type_Select<br />&lt;/product_view_options_type_select&gt;<br />   &lt;/rewrite&gt;<br />&lt;/catalog&gt;<br /></pre>Magento's XML parser fails to match the class name resulting in the empty page.<br /><br />In my opinion the new-line should be read only inside a CNAME delimited section.
+It isn't the first time ... refactoring a module (well actually I'm transforming and extensions which was incompatible with another installed one) I realized that only the admin panels were working, the product page nearly disappeared: header and
+footer plus sidebar but no product contents at all.<br/><br/>After validating all the mappings, blocks etc etc it ended up that I accidentally reformat the config.xml ... a new-line was dropped after the class name !<br/><br/>
+
+{% highlight xml %}
+<catalog>
+  <rewrite>
+    <product_view_options_type_select>Companyname_Modulename_Block_Product_View_Options_Type_Select
+    </product_view_options_type_select>
+  </rewrite>
+</catalog>
+{% endhighlight %}
+
+Magento's XML parser fails to match the class name resulting in the empty page.<br/><br/>
