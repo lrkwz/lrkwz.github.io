@@ -8,9 +8,10 @@ tags:
 - jelastic
 - ssl
 ---
-Ancora una volta ho avuto la chance di apprezzare le feature di Jelastic: avevo bisogno di mettere rapidamente la versione di collaudo di un sito sotto HTTPS ed è stato possibile farlo con un semplice click.
+![Drupal logo](https://www.drupal.org/files/druplicon-small.png) Ancora una volta ho avuto la chance di apprezzare le feature di Jelastic: avevo bisogno di mettere rapidamente la versione di collaudo di un sito sotto HTTPS ed è stato possibile farlo con un semplice click.
 
 Jelastic ha un certificato whildcard che supporta i domini ```*.<nomeprovider>.jelastic.com``` che rende la configurazione assolutamente brainless; altrimenti non devi fare altro che caricare il tuo certificato.
+![Jelastic Logo](https://upload.wikimedia.org/wikipedia/en/6/62/Jelastic_Official_Logo.jpg)
 
 L'HTTPS è gestito sul frontend pertanto il webserver non necessita di alcuna configurazione.
 
