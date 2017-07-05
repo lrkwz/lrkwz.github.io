@@ -10,15 +10,15 @@ Torniamo alle dimensioni delle immagini, per cercare l'immagine più grande poss
 
 Inizia con ricercare l'immagine che desideri per esempio indicando nel box di ricerca il nome dell'autore e il soggetto dell'immagine, nella pagina dei risultati sotto al box potrai scegliere il link alla ricerca per immagini.
 
-![Google Ricerca immagini](../assets/img/ricerca_immagini_1.png)
+![Google Ricerca immagini]({{ site.baseurl }}/assets/img/ricerca_immagini_1.png)
 
 A questo punto se scarichi l'immagine con il click destro del mouse otterrai una **inutile miniatura** della foto che desideravi. Ancora un piccolo sforzo, seleziona il bottone "Strumenti" che trovi sulla destra e a questo punto potrai impostare un filtro per visualizzare le sole immagini "Grandi"
 
-![Google immagini grandi](../assets/img/ricerca_immagini_2.png)
+![Google immagini grandi]({{ site.baseurl }}/assets/img/ricerca_immagini_2.png)
 
 Ci siamo quasi, non fermarti qui anche queste sono **inutili miniature**, clikka sulla immagine che desideri e poi sul bottone "Visualizza immagine"
 
-![Google visualizza immagine](../assets/img/ricerca_immagini_3.png)
+![Google visualizza immagine]({{ site.baseurl }}/assets/img/ricerca_immagini_3.png)
 
 Solo a questo punto avrai nel tuo browser l'immagine a dimensione completa, un click destro, "Salva come..." e puoi completare degnamente la tua presentazione.
 
