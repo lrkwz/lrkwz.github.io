@@ -1,4 +1,4 @@
-Da qualche anno frequento un gruppo di fotografi a San Giuliano il paese dove abito; il "Laboratorio di Fotografia e Cultura" è composto da fotografi amatoriali tutti di ottimo livello con formazione e cultura (informatica) diversa.
+Da qualche anno frequento un gruppo di fotografi a San Giuliano il paese dove abito; il "[Laboratorio di Fotografia e Cultura](https://www.facebook.com/groups/labfotosgm)" è composto da fotografi amatoriali tutti di ottimo livello con formazione e cultura (informatica) diversa.
 
 Parte fondamentale della attività del gruppo è la presentazione del lavoro di grandi autori del passato o contemporanei; per farlo in modo efficace spesso e volentieri è necessario approvigionarsi di fotografie disponibili su internet.
 
