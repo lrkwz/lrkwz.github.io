@@ -13,7 +13,7 @@ description: >
 
   This is my primary blog site, I usually write things in many different places but this is mine.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://lrkwz.github.io" # the base hostname & protocol for your site
+url: "https://lrkwz.github.io" # the base hostname & protocol for your site
 twitter_username: lrkwz
 github_username:  lrkwz
 linkedin_username: lrkwz
