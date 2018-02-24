@@ -35,6 +35,7 @@ exclude:
   - Gemfile.lock
   - LICENSE
   - README.md
+  - vendor
 
 theme: jekyll-theme-dinky
 

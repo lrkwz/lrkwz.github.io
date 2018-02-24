@@ -1,6 +1,6 @@
 *~
-.bundle
-_site
-.sass-cache
+/.bundle/
+/_site/
+/.sass-cache/
 .jekyll-metadata
 /vendor/
