@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Come implementare un repository maven in gitlab
+title: Come implementare un repository maven privato con Gitlab
 date: '2018-02-24'
 author: Luca Orlandi
 tags:
