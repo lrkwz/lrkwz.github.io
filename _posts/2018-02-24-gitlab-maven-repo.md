@@ -18,6 +18,8 @@ Forse non ho ancora avuto l'occasione di scriverlo ma lo ho detto sicuramente a 
 
 (poi integrazione fra issue e repository git tramite i commenti delle commit, tra CI e repository con deploy e tag, ...)
 
+![Milano Citylife]({{ "/assets/img/citylife-milano-20170203.jpg" | absolute_url }})
+
 Ad una analisi superficiale manca solo una implementazione di **repository maven** e poi sarebbe il sistema perfetto per ospitare tutti i miei sviluppi sia open-source che professionali.
 
 Questo limite ha una soluzione tutto sommato piuttosto semplice.
