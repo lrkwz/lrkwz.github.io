@@ -24,9 +24,9 @@ Ad una analisi superficiale manca solo una implementazione di **repository maven
 
 Questo limite ha una soluzione tutto sommato piuttosto semplice.
 
-Cercando sulla Rete puoi trovare sicuramente diversi articoli che illustrano come usare le estensioni del plugin `wagon maven` che si occupa del deploy degli artifact in modo che possano essere trasferiti tramite [git](https://git-scm.com) su [Github](https://github.com) o [Bitbucket](https://bitbucket.org). Ho trovato diverse estensioni adatte a questo scopo e ne ho scelta una: [Synergian wagon-git](http://synergian.github.io/wagon-git/) , non so se è la migliore ma funziona, le altre mi sono sembrate equivalenti. Quel che non si trova altrettanto facilmente è come utilizzare questi strumenti nello specifico di gitlab e soprattutto per progetti privati, sove l'accesso a qualunque risorsa è sottoposto ad autenticazione.
+Cercando sulla Rete puoi trovare sicuramente diversi articoli che illustrano come usare le estensioni del plugin `[wagon maven](http://maven.apache.org/wagon/)` che si occupa del deploy degli artifact in modo che possano essere trasferiti tramite [git](https://git-scm.com) su [Github](https://github.com) o [Bitbucket](https://bitbucket.org). Ho trovato diverse estensioni adatte a questo scopo e ne ho scelta una: [Synergian wagon-git](http://synergian.github.io/wagon-git/) , non so se è la migliore ma funziona; le altre mi sono sembrate equivalenti. Quel che non si trova altrettanto facilmente è come utilizzare questi strumenti nello specifico di gitlab e soprattutto per progetti privati, dove l'accesso a qualunque risorsa è sottoposto ad autenticazione (e gitlab non utilizza basic auth).
 
-Per andare al sodo ho aggiunto al `pom.xml` della mia libreria comune il riferimento alla estensione di maven wagon
+Per andare al sodo ho aggiunto al `pom.xml` della mia libreria comune il riferimento alla estensione wagon-git
 
 ```xml
     <build>
@@ -62,9 +62,11 @@ e infine le indicazioni di `distributionManagement` con le quali ho indicato qua
         </repository>
     </distributionManagement>
 ```
-A questo punto il comando `maven deploy` compile impacchetta e trasferisce il jar all'interno del branch `releases` del repository mave-repo.
+(queste configurazioni possono essere incluse in un [parent pom](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html#Super_POM) per non doverle ripetere per ciascuna libreria).
 
-Chi mi conosce lo sa bene, sono fissato per la automazione: mai e poi mai permetterei l'uso diffuso di una libreria compilata e impacchettata sul pc di uno sviluppatore, quindi ovviamente ho adattato la descrizione del file `.gitlab.yml` che guida l'esecuzione del sistema di continuous integration in modo che al momento di una push + tag il jar venga compilato e trasferito automaticamente:
+A questo punto il comando `maven deploy` compila, impacchetta e trasferisce il jar versionato all'interno del branch `releases` del repository mave-repo.
+
+Chi mi conosce lo sa bene, sono fissato per l'automazione delle build: mai e poi mai permetterei l'uso diffuso di una libreria compilata e impacchettata sul pc di uno sviluppatore, quindi ovviamente ho adattato la descrizione del file `.gitlab.yml` che guida l'esecuzione del sistema di continuous integration in modo che al momento di una push + tag il jar venga compilato e trasferito automaticamente:
 
 ```yml
 image: maven:3-jdk-8
@@ -97,7 +99,6 @@ deploy:
     - git config --global user.name  "$GITLAB_USER_NAME"
     - mvn deploy -DperformRelease
 ```
-
 
 dato che il progetto gitlab che ospita il repository maven è privato (come gli altri del resto) bisogna provvedere ad alimentare correttamente il meccanismo di autenticazione, per questo è sufficiente [generare una coppia di chiavi](https://docs.gitlab.com/ce/ssh/README.html#generating-a-new-ssh-key-pair) ssh e:
 
