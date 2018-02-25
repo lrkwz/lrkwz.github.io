@@ -22,20 +22,22 @@ paginate: 5
 permalink: pretty
 
 # Build settings
-markdown: kramdown
-gems:
+#markdown: kramdown
+plugins:
+  - jekyll-feed
   - jekyll-paginate
   - jekyll-assets
   - jekyll-sitemap
+  - rouge
 
 google_analytics_ua: UA-89993-1
 
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - LICENSE
-  - README.md
-  - vendor
+# exclude:
+#   - Gemfile
+#   - Gemfile.lock
+#   - LICENSE
+#   - README.md
+#   - vendor
 
 theme: jekyll-theme-dinky
 
