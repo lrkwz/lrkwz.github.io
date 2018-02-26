@@ -39,7 +39,7 @@ google_analytics_ua: UA-89993-1
 #   - README.md
 #   - vendor
 
-theme: jekyll-theme-dinky
+theme: jekyll-theme-minimal
 
 defaults:
   - scope:
