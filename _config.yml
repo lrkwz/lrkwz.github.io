@@ -30,7 +30,8 @@ plugins:
   - jekyll-sitemap
   - rouge
 
-google_analytics_ua: UA-89993-1
+google_analytics: UA-89993-1
+show_downloads: false
 
 # exclude:
 #   - Gemfile
@@ -39,7 +40,8 @@ google_analytics_ua: UA-89993-1
 #   - README.md
 #   - vendor
 
-theme: jekyll-theme-dinky
+#theme: jekyll-theme-dinky
+theme: jekyll-theme-minimal
 
 defaults:
   - scope:

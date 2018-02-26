@@ -1,17 +1,20 @@
 <!DOCTYPE html>
+{% include head.html %}
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
-  {% include head.html %}
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
   <body>
-    {% include header.html %}
-    <div class="page-content">
-      <div class="wrapper">
-        {{ content }}
-      </div>
+    <div class="wrapper">
+        {% include header.html %}
+        <div class="page-content">
+            {{ content }}
+        </div>
+        {% include footer.html %}
     </div>
-    {% include footer.html %}
-    {% include analytics.html %}
-  </body>
+{% include analytics.html %}
+</body>
 </html>
