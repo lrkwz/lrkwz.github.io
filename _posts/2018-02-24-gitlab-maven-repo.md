@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Come implementare un repository maven privato con Gitlab
+title: Come implementare un repository maven privato con Gitlab.com
 date: '2018-02-24'
 author: Luca Orlandi
 tags:
@@ -8,6 +8,9 @@ tags:
 - gitlab
 - automazione
 ---
+
+[edit] Dalla [versione 11.3 gitlab.com ha aggiunto i repository Maven](https://about.gitlab.com/2018/09/22/gitlab-11-3-released/#maven-repository) per i profili a pagamento.
+
 Forse non ho ancora avuto l'occasione di scriverlo ma lo ho detto sicuramente a tutti coloro i quali hanno la sfortuna di lavorare con me: [Gitlab](https://gitlab.com) in questo momento è sicuramente il servizio di hosting per lo sviluppo migliore che abbia mai individuato:
 
 * repository pubblici e privati senza limite di dimensione e quantità
