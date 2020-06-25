@@ -1,4 +1,19 @@
---- layout: post title: jCryption for Spring date: '2011-09-14T20:51:00.000+02:00' author: Luca Orlandi tags: - spring - Tech - crypting modified_time: '2011-09-27T14:47:01.236+02:00' thumbnail: http://3.bp.blogspot.com/-A56HfJtGviI/TncwA4KVJXI/AAAAAAAABm4/6LNA_k815Rw/s72-c/json.png blogger_id: tag:blogger.com,1999:blog-5600070.post-3213540699072380291 blogger_orig_url: http://lrkwz.blogspot.com/2011/09/jcryption-for-spring.html --- Mi è capitato diverse volte che un cliente mi richiedesse di implementare una forma di criptazione dei dati POSTati dalle form senza utilizzare SSL. Mi sono ripromesso di soprassedere sulla opportunità di questo requisito e sulle effettive caratteristiche di sicurezza di una soluzione basata sul crypting client side in javascript e provvedere ad una implementazione il più possibile solida e semplice.
+--- 
+layout: post 
+title: jCryption for Spring 
+date: '2011-09-14T20:51:00.000+02:00' 
+author: Luca Orlandi 
+tags:
+  - spring
+  - Tech
+  - crypting 
+modified_time: '2011-09-27T14:47:01.236+02:00' 
+thumbnail: http://3.bp.blogspot.com/-A56HfJtGviI/TncwA4KVJXI/AAAAAAAABm4/6LNA_k815Rw/s72-c/json.png 
+blogger_id: tag:blogger.com,1999:blog-5600070.post-3213540699072380291 
+blogger_orig_url: http://lrkwz.blogspot.com/2011/09/jcryption-for-spring.html 
+---
+
+<p>Mi è capitato diverse volte che un cliente mi richiedesse di implementare una forma di criptazione dei dati POSTati dalle form senza utilizzare SSL. Mi sono ripromesso di soprassedere sulla opportunità di questo requisito e sulle effettive caratteristiche di sicurezza di una soluzione basata sul crypting client side in javascript e provvedere ad una implementazione il più possibile solida e semplice.</p>
 <br/>
 <br/>Dopo diverse ricerche sono riuscito ad individuare
 <a href="http://www.jcryption.org/">jCryption</a>, un piccolo framework javascript/PHP appoggiato su
@@ -78,12 +93,9 @@ ho messo assieme un modulo di integrazione ragionevolmente semplice da utilizzar
 <br/>
 <br/> {% highlight html linenos %}
 <spring:url var="home" value="/" />
-
 <script src="${home }js/jquery-1.4.2.min.js" type="text/javascript"></script>
 <script src="${home }js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="${home }js/security/jquery.jcryption-1.2.js"></script> {% endhighlight%}
-
-
 <br/>A questo punto bisogna agganciare la funzione di crypting alla post di ciascuna form (p.e. src/main/webapp/WEB-INF/views/userprofiles/create.jspx e src/main/webapp/WEB-INF/views/userprofiles/update.jspx) inserendo :
 <br/>
 <br/>
