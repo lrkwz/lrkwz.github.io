@@ -23,11 +23,15 @@
                     <li>
                         <a href="http://www.flickr.com/lrkwz">Flickr</a>
                     </li>
-                    {% for my_page in site.pages %} {% if my_page.title %}
+                    {% for my_page in site.pages %}
+                        {% if my_page.title %}
+                            {% if my_page.title != "home" %}
                     <li>
                         <a class="page-link" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a>
                     </li>
-                    {% endif %} {% endfor %}
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
                     <li class="top-right-links"><a href="/archive/">Archive ({{ site.posts | size }} posts)</a></li>
                 </ul>
             </div>
