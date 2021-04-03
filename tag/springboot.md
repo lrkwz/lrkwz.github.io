@@ -1,6 +1,6 @@
 ---
 layout: tag_page
-title: "Tag: fotografia"
-tag: fotografia
+title: "Tag: springboot"
+tag: springboot
 robots: noindex
 ---

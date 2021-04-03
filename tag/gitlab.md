@@ -1,6 +1,6 @@
 ---
 layout: tag_page
-title: "Tag: fotografia"
-tag: fotografia
+title: "Tag: gitlab"
+tag: gitlab
 robots: noindex
 ---
