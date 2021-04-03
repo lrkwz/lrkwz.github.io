@@ -8,10 +8,12 @@ source "https://rubygems.org"
 #
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
-gem "jekyll", "~> 4.2.0"
+gem "jekyll", "~> 3.9.0"
 
 # This is the default theme for new Jekyll sites. You may change this to anything you like.
-gem "jekyll-theme-minimal", "~> 0.1.1"
+#gem "jekyll-theme-minimal", "~> 0.1.1"
+gem "jekyll-theme-primer", "~> 0.5.4"
+
 
 # If you want to use GitHub Pages, remove the "gem "jekyll"" above and
 # uncomment the line below. To upgrade, run `bundle update github-pages`.
@@ -19,8 +21,8 @@ gem "jekyll-theme-minimal", "~> 0.1.1"
 
 # If you have any plugins, put them here!
 group :jekyll_plugins do
-  gem "jekyll-feed", "~> 0.13.0"
-  gem "github-pages", "~> 206", group: :jekyll_plugins
+  gem "jekyll-feed", "~> 0.15.1"
+  gem "github-pages", "~> 214", group: :jekyll_plugins
   gem 'jekyll-paginate', "~> 1.1.0", group: :jekyll_plugins
   gem 'jekyll-sitemap', "~> 1.4.0", group: :jekyll_plugins
 end
