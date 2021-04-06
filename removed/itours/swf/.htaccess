@@ -1,5 +1,0 @@
-# enable expirations
-ExpiresActive On
-# expire SWF  after a month in the client's cache
-ExpiresByType application/x-shockwave-flash A2592000
-
